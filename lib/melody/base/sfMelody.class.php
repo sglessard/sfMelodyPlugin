@@ -24,7 +24,9 @@ class sfMelody
     $config = array_merge($default, $config);
 
     $provider = strtolower(isset($config['provider'])?$config['provider']:$name);
-    $class = 'sf'.sfInflector::camelize($provider.'_melody');
+
+    $class_format = isset($default['class_format']) ? $default['class_format'] : 'sf_%provider%_melody';
+    $class = lcfirst(sfInflector::camelize(str_replace('%provider%',$provider,$class_format)));
 
     $key = isset($config['key'])?$config['key']:null;
     $secret = isset($config['secret'])?$config['secret']:null;

@@ -76,6 +76,10 @@ Available options in app.yml  :
           scope: [permission_1, ...]  # for google and facebook to set permissions - for google prefere api parameter
           
           #optional
+          class_format: "prefix_%provider%_suffixe" # If app is using a custom class extends sf[Provider]Melody - will be camelized
+                                                    # Default is sf_%service%_melody 
+          
+          #optional
           user:                       # to create an user
             field_1:
               call: xx
