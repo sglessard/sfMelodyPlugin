@@ -20,6 +20,9 @@ class BasesfMelodyActions extends sfMelodyBaseActions
   {
     $melody = $this->getMelody();
 
+    if ($this->getLogger() && $request->getParameter('error',false))
+      $this->getLogger()->err(sprintf('{BasesfMelodyActions::executeAccess} Error: "%s"', $request->getParameter('error')));
+
     $melody->setCallback('@melody_access?service='.$melody->getName());
     $access_token = $melody->getAccessToken($this->getCode());
 
