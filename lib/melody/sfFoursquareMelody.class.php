@@ -29,6 +29,8 @@ class sfFoursquareMelody extends sfMelody2
    * @param locale : Foursquare internationalization (i18n)
    * @see https://developer.foursquare.com/docs/overview.html#internationalization
    *
+   * @param v : versioning
+   * @see https://developer.foursquare.com/docs/overview.html#versioning
    */
   public function initializeFromToken($token)
   {
@@ -36,6 +38,9 @@ class sfFoursquareMelody extends sfMelody2
     {
       // i18n from user culture
       $this->setCallParameter('locale', $this->getContext()->getUser()->getCulture());
+
+      // Versioning
+      $this->setCallParameter('v', '20110426');	// Compatible with top-level categories
 
       $this->setAlias('me','users/self');
     }
