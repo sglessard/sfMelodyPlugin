@@ -6,22 +6,11 @@ class sfFoursquareMelody extends sfMelody2
     $this->setRequestAuthUrl('https://foursquare.com/oauth2/authorize');
     $this->setAccessTokenUrl('https://foursquare.com/oauth2/access_token');
 
-    $this->setNamespace('default','https://api.foursquare.com/v2');
-
-    // Params requirement 
-    // @see https://developer.foursquare.com/docs/oauth.html
-    // Auth step
-    $this->setAuthParameter('response_type', 'code');
-
-    // Access step
-    $this->setAccessParameter('grant_type', 'authorization_code');
-    
     if(isset($config['scope']))
     {
       $this->setAuthParameter('scope', implode(',', $config['scope']));
     }
   }
-
 
   /**
    * (non-PHPdoc)
@@ -31,16 +20,14 @@ class sfFoursquareMelody extends sfMelody2
    *
    * @param v : versioning
    * @see https://developer.foursquare.com/docs/overview.html#versioning
+   * @see http://groups.google.com/group/foursquare-api/browse_thread/thread/3605b214c2b3a1dd/5b034efa284b3818
    */
   public function initializeFromToken($token)
   {
     if($token && $token->getStatus() == Token::STATUS_ACCESS)
     {
-      // i18n from user culture
+      // We use user culture
       $this->setCallParameter('locale', $this->getContext()->getUser()->getCulture());
-
-      // Versioning
-      $this->setCallParameter('v', '20110426');	// Compatible with top-level categories
 
       $this->setAlias('me','users/self');
     }
@@ -48,8 +35,7 @@ class sfFoursquareMelody extends sfMelody2
 
   public function getIdentifier()
   {
-    //
-   // return $this->getToken()->getParam('user_id');
+    return null; // No param is returned from access token request
   }
 
   protected function setExpire(&$token)
