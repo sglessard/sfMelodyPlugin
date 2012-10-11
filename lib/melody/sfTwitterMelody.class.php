@@ -7,7 +7,7 @@ class sfTwitterMelody extends sfMelody1
     $this->setRequestAuthUrl('https://api.twitter.com/oauth/authorize');
     $this->setAccessTokenUrl('https://api.twitter.com/oauth/access_token');
 
-    $this->setNamespaces(array('default' => 'http://api.twitter.com'));
+    $this->setNamespaces(array('default' => 'http://api.twitter.com/1.1'));
   }
 
   public function initializeFromToken($token)
