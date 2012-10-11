@@ -14,8 +14,6 @@ class sfFlickrMelody extends sfMelody1
   {
     if($token && $token->getStatus() == Token::STATUS_ACCESS)
     {
-      $this->setCallParameter('format', 'json');
-      $this->setCallParameter('nojsoncallback', '1');
       $this->setAlias('me','?method=flickr.people.getInfo&user_id='.$this->getIdentifier());
     }
   }
