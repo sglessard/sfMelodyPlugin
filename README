@@ -44,14 +44,19 @@ For Propel:
 ## Melodies ##
 
 
-At this time sfMelody has 8 melodies :) :
+At this time sfMelody has 13 melodies :) :
 
  * Facebook
+ * Flickr
+ * Foursquare
  * Google
- * Yahoo 
+ * Hyves
+ * Instagram
  * LinkedIn
+ * Messenger
  * MySpace
  * Twitter
+ * Yahoo 
  * Neutral1  #A base class to support OAuth1
  * Neutral2  #A base class to support OAuth2
  
@@ -167,10 +172,74 @@ Then put the config in app.yml:
         facebook_plus:                  # you can manage more than one config for a service
           provider: facebook            # to manage permissions for example            
           ...
+
         google:
           ...
-          
 
+        twitter:
+          key:  my_api_key
+          secret: application_secret
+          callback: @my_auth_success_route
+          namespaces:
+            default: http://api.twitter.com/1.1
+          user:
+            username: 
+              call: me
+              path: screen_name
+              prefix: Twitter_
+
+        flickr:
+          key:  my_api_key
+          secret: application_secret
+          callback: @my_auth_success_route
+          namespaces:
+            default: http://api.flickr.com/services/rest
+          user:
+            username:
+              call: me
+              path: username
+              prefix: Flickr_
+          call_parameters:
+            format: json
+            nojsoncallback: 1
+
+        foursquare:
+          key:  my_api_key
+          secret: application_secret
+          callback: @my_auth_success_route
+          namespaces:
+            default: https://api.foursquare.com/v2
+          user:
+            first_name:
+              call: me
+              path: response.user.firstName
+              prefix: Foursquare_
+            id:
+              call: me
+              path: response.user.id
+          auth_parameters:
+            response_type: code
+          call_parameters:
+            v: 20110426      # Versioning example
+            locale: en       # User culture
+          access_parameters:
+            grant_type: authorization_code
+
+        instagram:
+          key:  my_api_key
+          secret: application_secret
+          callback: @my_auth_success_route
+          namespaces:
+            default: https://api.instagram.com/v1
+          user:
+            username:
+              call: me
+              path: username
+              prefix: Instagram_
+          auth_parameters:
+            response_type: code
+          access_parameters:
+            grant_type: authorization_code
 
 For example we put a link:
 
@@ -251,9 +320,16 @@ To make api calls, you have to know api for each service provider :
 
   * Google : http://code.google.com/intl/fr/apis/gdata/docs/directory.html
   * Facebook: http://developers.facebook.com/docs/reference/api/
+  * Flickr : 
+  * Foursquare : 
+  * Hyves : 
+  * Instagram : http://instagram.com/developer/endpoints/
+  * LinkedIn : 
+  * Messenger :
+  * Myspace :
+  * Twitter : https://dev.twitter.com/docs/api/1.1
   * Yahoo! : http://developer.yahoo.com/everything.html#apis
-  * ...
-  
+
 ## Register Application ##
 
  * Google: https://www.google.com/accounts/ManageDomains
@@ -300,10 +376,10 @@ To change the namesapce in use just use:
     * youtube: http://gdata.youtube.com
 
 You can use all these namespaces in the api config to have permissions to use them.
-     
+
   * Twitter
   
-      * default: http://api.twitter.com
+      * default: http://api.twitter.com/1.1
 
   * Yahoo !
 
