@@ -6,7 +6,9 @@ class sfInstagramMelody extends sfMelody2
     $this->setRequestAuthUrl('https://instagram.com/oauth/authorize');
     $this->setAccessTokenUrl('https://api.instagram.com/oauth/access_token');
     $this->setAccessTokenMethod('POST');
-    
+
+    $this->setNamespaces(array('default' => 'https://api.instagram.com/v1'));
+
     if(isset($config['scope']))
     {
       $this->setAuthParameter('scope', implode(',', $config['scope']));

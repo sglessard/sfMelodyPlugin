@@ -6,6 +6,8 @@ class sfFoursquareMelody extends sfMelody2
     $this->setRequestAuthUrl('https://foursquare.com/oauth2/authorize');
     $this->setAccessTokenUrl('https://foursquare.com/oauth2/access_token');
 
+    $this->setNamespaces(array('default' => 'https://api.foursquare.com/v2'));
+
     if(isset($config['scope']))
     {
       $this->setAuthParameter('scope', implode(',', $config['scope']));
