@@ -22,12 +22,12 @@ For Propel:
 
  * Install
  
-	    $ symfony plugin:install sfMelodyPlugin
-	 
+      $ symfony plugin:install sfMelodyPlugin
+   
  * Clear cache
  
-	    $ symfony cc
-	  
+      $ symfony cc
+    
  * Enable the sfMelody module in settings.yml:
  
         all:
@@ -44,7 +44,7 @@ For Propel:
 ## Melodies ##
 
 
-At this time sfMelody has 13 melodies :) :
+At this time sfMelody has 14 melodies :) :
 
  * Facebook
  * Flickr
@@ -56,7 +56,8 @@ At this time sfMelody has 13 melodies :) :
  * Messenger
  * MySpace
  * Twitter
- * Yahoo 
+ * Yahoo
+ * Skyrock
  * Neutral1  #A base class to support OAuth1
  * Neutral2  #A base class to support OAuth2
  
@@ -175,6 +176,8 @@ Then put the config in app.yml:
 
         google:
           ...
+        skyrock:
+          ...  
 
         twitter:
           key:  my_api_key
@@ -329,12 +332,14 @@ To make api calls, you have to know api for each service provider :
   * Myspace :
   * Twitter : https://dev.twitter.com/docs/api/1.1
   * Yahoo! : http://developer.yahoo.com/everything.html#apis
+  * Skyrock : http://www.skyrock.com/developer/documentation/api/
 
 ## Register Application ##
 
  * Google: https://www.google.com/accounts/ManageDomains
  * Facebook: http://www.facebook.com/developers/apps.php
  * Yahoo! : https://developer.apps.yahoo.com/projects
+ * Skyrock : https://www.skyrock.com/developer/application/
  
  
 ## Namespaces ##
@@ -392,6 +397,10 @@ You can use all these namespaces in the api config to have permissions to use th
    * MySpace
 
       * default:  http://api.myspace.com/v1
+
+  * Skyrock
+
+     * default:   https://api.skyrock.com/v2
       
       
 ## Aliases ##
@@ -414,7 +423,11 @@ Default aliases :
       
   * MySpace
     
-      * me: user.json      
+      * me: user.json
+
+  * Skyrock
+    
+      * me: user/get.json          
 
 
 ## Contribute ##

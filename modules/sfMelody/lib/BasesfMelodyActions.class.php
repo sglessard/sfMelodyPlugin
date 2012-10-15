@@ -83,7 +83,7 @@ class BasesfMelodyActions extends sfMelodyBaseActions
     {
       $access_token->setUserId($user->getId());
 
-      if(!$this->getUser()->isAuthenticated())
+      if(!$this->getUser()->isAuthenticated() && $user->getIsActive())
       {
         $this->getUser()->signin($user, sfConfig::get('app_melody_remember_user', true));
       }
