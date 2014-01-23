@@ -17,12 +17,11 @@ class sfFoursquareMelody extends sfMelody2
   /**
    * (non-PHPdoc)
    *
-   * @param locale : Foursquare internationalization (i18n)
-   * @see https://developer.foursquare.com/docs/overview.html#internationalization
+   * Call parameter locale : Foursquare internationalization (i18n)
+   * @see https://developer.foursquare.com/overview/versioning
    *
-   * @param v : versioning
-   * @see https://developer.foursquare.com/docs/overview.html#versioning
-   * @see http://groups.google.com/group/foursquare-api/browse_thread/thread/3605b214c2b3a1dd/5b034efa284b3818
+   * Call parameter v : versioning (see app.yml)
+   * @see https://developer.foursquare.com/overview/versioning
    */
   public function initializeFromToken($token)
   {
@@ -53,6 +52,9 @@ class sfFoursquareMelody extends sfMelody2
    * Since Foursquare uses 'oauth_token' name for the access token parameter
    * We override the sfOAuth2::prepareCall method
    *
+   * Call parameter locale : Foursquare internationalization (i18n)
+   * @see https://developer.foursquare.com/overview/versioning
+   *
    * @see plugins/sfDoctrineOAuthPlugin/lib/sfOAuth2::prepareCall()
    */
   protected function prepareCall($action, $aliases = null, $params = array(), $method = 'GET')
@@ -63,6 +65,9 @@ class sfFoursquareMelody extends sfMelody2
     }
 
     $this->setCallParameter('oauth_token', $this->getToken()->getTokenKey());
+
+    // locale parameter was moved from app.yml to here to get the current user culture
+   // $this->setCallParameter('locale', $this->getContext()->getUser()->getCulture());
 
     if(in_array($method, array('GET', 'POST')))
     {

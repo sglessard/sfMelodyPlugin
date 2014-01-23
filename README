@@ -184,7 +184,7 @@ Then put the config in app.yml:
           secret: application_secret
           callback: @my_auth_success_route
           namespaces:
-            default: http://api.twitter.com/1.1
+            default: https://api.twitter.com/1.1
           user:
             username: 
               call: me
@@ -224,7 +224,6 @@ Then put the config in app.yml:
             response_type: code
           call_parameters:
             v: 20110426      # Versioning example
-            locale: en       # User culture
           access_parameters:
             grant_type: authorization_code
 
@@ -384,7 +383,7 @@ You can use all these namespaces in the api config to have permissions to use th
 
   * Twitter
   
-      * default: http://api.twitter.com/1.1
+      * default: https://api.twitter.com/1.1
 
   * Yahoo !
 
