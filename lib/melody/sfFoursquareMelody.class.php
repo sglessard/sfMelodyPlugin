@@ -67,7 +67,7 @@ class sfFoursquareMelody extends sfMelody2
     $this->setCallParameter('oauth_token', $this->getToken()->getTokenKey());
 
     // locale parameter was moved from app.yml to here to get the current user culture
-   // $this->setCallParameter('locale', $this->getContext()->getUser()->getCulture());
+    $this->setCallParameter('locale', $this->getContext()->getUser()->getCulture());
 
     if(in_array($method, array('GET', 'POST')))
     {
