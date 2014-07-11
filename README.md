@@ -196,7 +196,7 @@ Then put the config in app.yml:
           secret: application_secret
           callback: @my_auth_success_route
           namespaces:
-            default: http://api.flickr.com/services/rest
+            default: https://api.flickr.com/services/rest
           user:
             username:
               call: me
