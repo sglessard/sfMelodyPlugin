@@ -3,11 +3,11 @@ class sfFlickrMelody extends sfMelody1
 {
   protected function initialize($config)
   {
-    $this->setRequestTokenUrl('http://www.flickr.com/services/oauth/request_token');
-    $this->setRequestAuthUrl('http://www.flickr.com/services/oauth/authorize');
-    $this->setAccessTokenUrl('http://www.flickr.com/services/oauth/access_token');
+    $this->setRequestTokenUrl('https://www.flickr.com/services/oauth/request_token');
+    $this->setRequestAuthUrl('https://www.flickr.com/services/oauth/authorize');
+    $this->setAccessTokenUrl('https://www.flickr.com/services/oauth/access_token');
 
-    $this->setNamespaces(array('default' => 'http://api.flickr.com/services/rest'));
+    $this->setNamespaces(array('default' => 'https://api.flickr.com/services/rest'));
   }
 
   public function initializeFromToken($token)
